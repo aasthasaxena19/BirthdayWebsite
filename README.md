@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-View it live here: [BirthdayWebsite](https://yourusername.github.io/BirthdayWebsite/)
+View it live here: [BirthdayWebsite](https://aasthasaxena19.github.io/BirthdayWebsite/)
 
 ## How to Use
 
