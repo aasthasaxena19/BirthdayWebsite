@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    /* Animated rainbow heading */
+    h1 {
+      font-size: 4rem;
+      background: linear-gradient(90deg, #ff6b81, #feca57, #48dbfb, #1dd1a1, #ff6b81);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite, scaleText 1.5s ease-in-out infinite alternate;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0%;}
+      100% { background-position: 400%;}
+    }
+
+    @keyframes scaleText {
+      0% { transform: scale(1);}
+      100% { transform: scale(1.1);}
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff6b81;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      z-index: 10;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #ff4757;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: 0;
+      animation: fall 3s linear forwards;
+      border-radius: 50%;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    /* Small shadow effect for balloons */
+    .balloon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: #555;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+    }
+
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday! 🎉</h1>
+  <p>May your day be full of joy, love, and surprises!</p>
+  <button onclick="celebrate()">Celebrate 🎈</button>
+
+  <script>
+    // Confetti function
+    function celebrate() {
+      for(let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`;
+        confetti.style.width = confetti.style.height = Math.random()*10 + 5 + 'px';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+      alert('Have an amazing birthday! 🎂');
+    }
+
+    // Balloon generation
+    const colors = ['#ff6b81','#feca57','#48dbfb','#1dd1a1','#ff9f43'];
+    for(let i=0; i<25; i++) {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * window.innerWidth + 'px';
+      balloon.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+      balloon.style.width = 30 + Math.random()*30 + 'px';
+      balloon.style.height = 40 + Math.random()*40 + 'px';
+      balloon.style.animationDuration = 5 + Math.random()*5 + 's';
+      document.body.appendChild(balloon);
+    }
+  </script>
+</body>
+</html>
